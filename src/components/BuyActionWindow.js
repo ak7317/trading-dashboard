@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import axios from "axios";
 
@@ -19,12 +19,21 @@ const BuyActionWindow = ({ uid, mode = "BUY"  }) => {
 
   const handleBuyClick = async() => {
     try{
-    const res = await axios.post("https://trading-backend-2d5t.onrender.com/newOrder", {
-      name: uid,
-      qty: stockQuantity,
-      price: stockPrice,
-      mode: mode,
-    });
+      const token = localStorage.getItem("token");
+      await axios.post(
+        "https://trading-backend-2d5t.onrender.com/newOrder", 
+        {
+          name: uid,
+          qty: stockQuantity,
+           price: stockPrice,
+           mode: mode,
+    },
+    {
+    headers: {
+      Authorization: token,
+    },
+  }
+  );
     //  console.log(res.data);
      setMessage(`Order placed successfully(${mode})`);
 
