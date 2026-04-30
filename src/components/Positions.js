@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import axios, { all } from "axios";
+import axios from "axios";
 // import { positions} from "../data/data";
 
 const Positions = () => {
@@ -71,8 +71,8 @@ const Positions = () => {
                 <td>{stock.product}</td>
                 <td>{stock.name}</td>
                 <td>{stock.qty}</td>
-                <td>{stock.avg.toFixed(2)}</td>
-                <td>{stock.price.toFixed(2)}</td>
+                <td>{stock.avg?.toFixed(2)}</td>
+                <td>{stock.price?.toFixed(2)}</td>
                 <td className={profClass}>
                   {(curValue - stock.avg * stock.qty).toFixed(2)}
                 </td>
