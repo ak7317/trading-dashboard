@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios, { all } from "axios";
+import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
 
 // import { holdings } from "../data/data";
@@ -27,7 +27,7 @@ const Holdings = () => {
       console.log("Error",  err);
       if(err.response?.status === 403) {
         alert("please login first");
-        window.location.href="/login";
+        window.location.href= "/login";
       }
     });
   }, []);
@@ -89,8 +89,8 @@ const Holdings = () => {
               <tr key={index}>
                 <td>{stock.name}</td>
                 <td>{stock.qty}</td>
-                <td>{stock.avg.toFixed(2)}</td>
-                <td>{stock.price.toFixed(2)}</td>
+                <td>{stock.avg?.toFixed(2)}</td>
+                <td>{stock.price?.toFixed(2)}</td>
                 <td>{curValue.toFixed(2)}</td>
                 <td className={profClass}>
                   {(curValue - stock.avg * stock.qty).toFixed(2)}
