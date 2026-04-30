@@ -9,10 +9,24 @@ const Orders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("https://trading-backend-2d5t.onrender.com/allOrders");
+        const token = localStorage.getItem("token");
+
+        const res = await axios.get(
+          "https://trading-backend-2d5t.onrender.com/allOrders",
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+
+        );
         setOrders(res.data);
       } catch (err) {
         console.log(err);
+        if (err.response?.status === 403) {
+        alert("Please login first");
+        window.location.href = "/login";
+        }
       }
     };
 
