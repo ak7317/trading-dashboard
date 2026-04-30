@@ -14,7 +14,7 @@ const Positions = () => {
   }
 
   axios
-    .get("http://localhost:3002/allPositions", {
+    .get("https://trading-backend-2d5t.onrender.com/allPositions", {
       headers: {
         Authorization: token,
       },

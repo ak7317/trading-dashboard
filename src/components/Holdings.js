@@ -14,7 +14,7 @@ const Holdings = () => {
       console.log("No token found");
       return;
     }
-    axios.get("http://localhost:3002/allHoldings", {
+    axios.get("https://trading-backend-2d5t.onrender.com/allHoldings", {
       headers: {
         Authorization: token,
       },
@@ -27,7 +27,7 @@ const Holdings = () => {
       console.log("Error",  err);
       if(err.response?.status === 403) {
         alert("please login first");
-        window.location.href("/login");
+        window.location.href="/login";
       }
     });
   }, []);
