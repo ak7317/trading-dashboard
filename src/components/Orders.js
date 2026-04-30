@@ -10,7 +10,11 @@ const Orders = () => {
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem("token");
-
+         if (!token) {
+        console.log("No token found");
+        window.location.href = "/login";
+        return;
+      }
         const res = await axios.get(
           "https://trading-backend-2d5t.onrender.com/allOrders",
           {
