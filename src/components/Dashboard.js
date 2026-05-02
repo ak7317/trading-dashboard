@@ -9,7 +9,7 @@ import Orders from "./Orders";
 import Positions from "./Positions";
 import Summary from "./Summary";
 import WatchList from "./WatchList";
-import GeneralContext, { GeneralContextProvider } from "./GeneralContext";
+import { GeneralContextProvider } from "./GeneralContext";
 import { useEffect } from "react";
 
 
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
 
   if (!token) {
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = "/login";
   }
 }, []);
   return  (

@@ -12,14 +12,14 @@ const Menu = () => {
     setSelectedMenu(index);
   };
 
-  const handleProfileClick = (index) => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
-  };
+  // const handleProfileClick = (index) => {
+  //   setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  // };
 
   const handleLogout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
-  window.location.href = "http://localhost:3000";
+  window.location.href = "/";
 };
 
   const menuClass = "menu";
@@ -27,7 +27,7 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "50px" }} />
+      <img src="logo.png" alt="logo" style={{ width: "50px" }} />
       <div className="menus">
         <ul>
           <li>
