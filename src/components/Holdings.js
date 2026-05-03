@@ -22,11 +22,11 @@ const Holdings = () => {
           "https://trading-backend-2d5t.onrender.com/allHoldings",
           {
             headers: {
-              Authorization: token,
+               Authorization: `Bearer ${token}`,
             },
           }
         );
-
+          console.log("DATA:", res.data);
         setAllHoldings(res.data);
         setLoading(false);
       } catch (err) {
@@ -36,6 +36,8 @@ const Holdings = () => {
           alert("Please login first");
           window.location.href = "/login";
         }
+        } finally {
+         setLoading(false);
       }
     };
 
@@ -46,20 +48,22 @@ const Holdings = () => {
   if (loading) {
     return <p style={{ textAlign: "center" }}>Loading...</p>;
   }
-
+  
   // 📊 Graph data
-  const labels = allHoldings.map((item) => item.name);
+  const labels = allHoldings?.map((item) => item.name || "N/A") || [];
 
   const data = {
     labels,
     datasets: [
       {
         label: "Stock Price",
-        data: allHoldings.map((stock) => stock.price || 0),
+        data: allHoldings?.map((stock) => Number(stock.price) || 0) || [],
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
   };
+
+   console.log("GRAPH DATA:", data);
 
   return (
     <>
@@ -95,7 +99,7 @@ const Holdings = () => {
               const dayClass = stock.isLoss ? "loss" : "profit";
 
               return (
-                <tr key={stock._id}>
+                <tr key={stock._id || stock.name}>
                   <td>{stock.name}</td>
                   <td>{qty}</td>
                   <td>{avg.toFixed(2)}</td>

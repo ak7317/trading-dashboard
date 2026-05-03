@@ -30,7 +30,7 @@ const BuyActionWindow = ({ uid, mode = "BUY"  }) => {
     },
     {
     headers: {
-      Authorization: token,
+       Authorization: `Bearer ${token}`,
     },
   }
   );
@@ -40,12 +40,15 @@ const BuyActionWindow = ({ uid, mode = "BUY"  }) => {
     setTimeout(() => {
      setMessage("");
       closeBuyWindow();
-    },3000); 
+    }, 3000); 
    
 
     } catch (err) {
       // console.log(err);
-      alert("order failed");
+      setMessage(`order failed (${mode})`);
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
     }
   };
 

@@ -7,19 +7,29 @@ const Positions = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (!token) return;
+    if (!token) {
+    console.log("No token found");
+    return;
+  }
+
+    // if (!token) return;
 
     axios
       .get("https://trading-backend-2d5t.onrender.com/allPositions", {
-        headers: { Authorization: token },
+        headers: {
+        Authorization: `Bearer ${token}`,
+        },
       })
-      .then((res) => setAllPositions(res.data))
+      .then((res) => {setAllPositions(res.data);
+      }
+      )
       .catch((err) => {
         if (err.response?.status === 403) {
           window.location.href = "/login";
         }
       });
   }, []);
+  
 
   return (
     <>
@@ -27,7 +37,7 @@ const Positions = () => {
 
       <div className="order-table">
         <table>
-          <thead>
+          
             <tr>
               <th>Product</th>
               <th>Instrument</th>
@@ -37,7 +47,7 @@ const Positions = () => {
               <th>P&L</th>
               <th>Chg.</th>
             </tr>
-          </thead>
+        
 
           <tbody>
             {allPositions.map((stock, index) => {

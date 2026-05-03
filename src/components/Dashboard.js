@@ -11,6 +11,7 @@ import Summary from "./Summary";
 import WatchList from "./WatchList";
 import { GeneralContextProvider } from "./GeneralContext";
 import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,20 +19,28 @@ import { useEffect } from "react";
 const Dashboard = () => {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-  const tokenFromURL = params.get("token");
+   const tokenFromURL = params.get("token");
+    console.log("TOKEN FROM URL:", tokenFromURL);
   if (tokenFromURL) {
     localStorage.setItem("token", tokenFromURL);
 
     // 👉 optional: URL clean कर दो
-    window.history.replaceState({}, document.title, "/");
+    // window.history.replaceState({}, document.title, "/");
+    setTimeout(() => {
+       window.history.replaceState({}, document.title, window.location.pathname);
+  
+    }, 100);
+   
   }
 
   // 🔐 final check
   const token = localStorage.getItem("token");
+   console.log("TOKEN IN STORAGE:", token);
 
 
   if (!token) {
-    window.location.href = "/login";
+    window.location.href = "http://localhost:3000/login";
+    // NavigateEvent("/login");
   }
 }, []);
   return  (

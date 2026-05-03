@@ -12,14 +12,14 @@ const Menu = () => {
     setSelectedMenu(index);
   };
 
-  // const handleProfileClick = (index) => {
-  //   setIsProfileDropdownOpen(!isProfileDropdownOpen);
-  // };
+  const handleProfileClick = (index) => {
+    setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  };
 
   const handleLogout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
-  window.location.href = "/";
+  window.location.href = "http://localhost:3000";
 };
 
   const menuClass = "menu";
