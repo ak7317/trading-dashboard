@@ -19,7 +19,7 @@ const Orders = () => {
           "https://trading-backend-2d5t.onrender.com/allOrders",
           {
             headers: {
-              Authorization: token,
+              Authorization: `Bearer ${token}`,
             },
           }
 
