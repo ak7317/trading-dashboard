@@ -13,7 +13,7 @@ const Holdings = () => {
 
         // 🔐 Auth check
         if (!token) {
-          alert("Please login first");
+          // alert("Please login first");
           window.location.href = "https://trading-fronted-gamma.vercel.app/login";
           return;
         }
@@ -34,7 +34,8 @@ const Holdings = () => {
 
         if (err.response?.status === 403) {
           alert("Please login first");
-          window.location.href = "/login";
+          // window.location.href = "/login";
+           window.location.href = "https://trading-fronted-gamma.vercel.app/login";
         }
         } finally {
          setLoading(false);
