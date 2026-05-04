@@ -19,7 +19,7 @@ const Menu = () => {
   const handleLogout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
-  window.location.href = "http://localhost:3000";
+  window.location.href = "https://trading-fronted-gamma.vercel.app";
 };
 
   const menuClass = "menu";

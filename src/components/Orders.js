@@ -12,7 +12,8 @@ const Orders = () => {
         const token = localStorage.getItem("token");
          if (!token) {
         console.log("No token found");
-        window.location.href = "/login";
+        // window.location.href = "/login";
+        window.location.href = "https://trading-fronted-gamma.vercel.app/login";
         return;
       }
         const res = await axios.get(
@@ -29,7 +30,8 @@ const Orders = () => {
         console.log(err);
         if (err.response?.status === 403) {
         alert("Please login first");
-        window.location.href = "/login";
+        // window.location.href = "/login";
+        window.location.href = "https://trading-fronted-gamma.vercel.app/login";
         }
       }
     };

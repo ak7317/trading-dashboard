@@ -25,7 +25,8 @@ const Positions = () => {
       )
       .catch((err) => {
         if (err.response?.status === 403) {
-          window.location.href = "/login";
+          // window.location.href = "/login";
+          window.location.href = "https://trading-fronted-gamma.vercel.app/login";
         }
       });
   }, []);

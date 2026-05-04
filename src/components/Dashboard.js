@@ -40,7 +40,7 @@ const Dashboard = () => {
 
   if (!token) {
     // window.location.href = "http://localhost:3000/login";
-      window.location.href = "trading-fronted-git-main-ak7317s-projects.vercel.app/login";
+      window.location.href = "https://trading-fronted-gamma.vercel.app/login";
     // NavigateEvent("/login");
   }
 }, []);
